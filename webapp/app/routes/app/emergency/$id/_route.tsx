@@ -30,6 +30,9 @@ import { $path } from "remix-routes";
 import { zodHex } from "validate-cli";
 import { type Hex, isAddressEqual } from "viem";
 import { type ZodTypeAny, z } from "zod";
+import {
+  ExecuteEmergencyUpgradeButtonOffChain
+} from "@/routes/app/emergency/$id/execute-emergency-upgrade-button-offchain";
 
 export async function loader(args: LoaderFunctionArgs) {
   const user = requireUserFromHeader(args.request);
@@ -240,8 +243,16 @@ export default function EmergencyUpgradeDetails() {
               zkFoundationAddress={addresses.zkFoundation}
               proposal={proposal}
             >
-              Execute upgrade
+              Execute upgrade (off-chain)
             </ExecuteEmergencyUpgradeButton>
+            <ExecuteEmergencyUpgradeButtonOffChain
+              boardAddress={addresses.emergencyBoard}
+              allGuardians={allGuardians}
+              allCouncil={allSecurityCouncil}
+              proposal={proposal}
+            >
+              Execute upgrade (on-chain)
+            </ExecuteEmergencyUpgradeButtonOffChain>
           </CardContent>
         </Card>
       </div>
