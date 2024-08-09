@@ -21,7 +21,7 @@ export default function NavbarWithUser({
         </div>
         <div className="flex items-center space-x-2">
           {role && (
-            <Button className="disabled:opacity-100" disabled>
+            <Button className="disabled:opacity-100" disabled data-testid="user-role">
               {role === "guardian" && "Guardian"}
               {role === "securityCouncil" && "Security Council"}
               {role === "visitor" && "Visitor"}
